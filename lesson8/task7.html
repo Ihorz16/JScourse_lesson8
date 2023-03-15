@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h3>Задача 7</h3>
+	<p>Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+		1) за весь рік;
+		2) у першій половині року;
+		3) у другій половині року;
+		4) за літо;
+		5) за ІІ квартал;
+		6) за парні місяці (з парними номерами);
+		7) за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+	</p>
+	<script>
+		const paymentList = userPaymentPerMonths(12)
+		// функція введення масиву
+		function userPaymentPerMonths(number) {
+			let arr = []
+			for (let i = 1; i <= number; i++) {
+				const userPayMoney = parseFloat(prompt(`Введіть суму грошей за оплату за ${i} місяць`))
+				arr.push(userPayMoney)
+			}
+			return arr
+		}
+		// знаходження суми оплати за кожний період
+		function getSumPerMonths(paymentList, startMonthNumber, endMonthNumber) {
+			let sum = 0
+			for (let month = startMonthNumber - 1; month < endMonthNumber; month++) {
+				sum += paymentList[month]
+			}
+			return sum
+		}
+		// знаходження суми за парні місяці
+		function getSumEvenMonth(paymentList) {
+			let sum = 0
+			for (let i = 0; i < paymentList.length; i += 2) {
+				sum += paymentList[i]
+			}
+			return sum
+		}
+		// знаходження за перші месяці
+		function getSumFirstMonths(paymentList) {
+			let sum = 0
+			for (let i = 0; i < paymentList.length; i += 3) {
+				sum += paymentList[i]
+			}
+			return sum
+		}
+
+
+		const sumPaymentsForAllYear = getSumPerMonths(paymentList, 1, 12)
+		const sumFirstHalfOfYear = getSumPerMonths(paymentList, 1, 6)
+		const sumSecondHalfOfYear = getSumPerMonths(paymentList, 7, 12)
+		const sumSummer = getSumPerMonths(paymentList, 6, 8)
+		const sumSecondQuarter = getSumPerMonths(paymentList, 4, 6)
+		const sumOnlyEvenMonth = getSumEvenMonth(paymentList)
+		const sumOnlyFirstMonthsOfYear = getSumFirstMonths(paymentList)
+
+		document.write(`Сумарна кількість за весь рік ${sumPaymentsForAllYear}<br>Сумарна кількість у першій половині року ${sumFirstHalfOfYear} <br>`)
+		document.write(`Сумарна кількість у другій половині року ${sumSecondHalfOfYear}<br>`)
+		document.write(`Сумарна кількість за літо ${sumSummer}<br>`)
+		document.write(`Сумарна кількість за ІІ квартал ${sumSecondQuarter}<br>`)
+		document.write(`Сумарна кількість за парні місяці ${sumOnlyEvenMonth}<br>`)
+		document.write(`Сумарна кількість за місяці, які є початковими у сезоні ${sumOnlyFirstMonthsOfYear}`)
+	</script>
+</body>
+
+</html>

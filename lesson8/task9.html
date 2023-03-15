@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h3>Задача 9</h3>
+	<p>Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер
+		довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то
+		це
+		означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не
+		будуть потоплені усі кораблі.</p>
+	<script>
+		const userQuantityfCells = parseInt(prompt(`Введіть кількість клітинок`))
+		const userQuantityOfShips = parseInt(prompt(`Введіть кількість кораблів`))
+		// знаходимо кількість клітинок
+		function getNumOfCells(cell) {
+			let arr = []
+			for (let i = 0; i < cell; i++) {
+				arr.push(0)
+			}
+			return arr
+		}
+		// знаходимо кількість кораблів
+		function getPlaceOfShips(ships, arrCells) {
+			for (let i = 0; i < ships; i++) {
+				const randomPlaceShip = Math.floor(Math.random() * (userQuantityfCells + 1 - 1)) + 0
+				if (arrCells[randomPlaceShip] === 1) {
+					i--
+					continue
+				} else arrCells[randomPlaceShip] = 1
+			}
+			return arrCells
+		}
+
+		let placementOfShips = getPlaceOfShips(userQuantityOfShips, getNumOfCells(userQuantityfCells))
+		userGame(userQuantityOfShips, placementOfShips)
+		// гра
+		function userGame(userQuantityOfShips, placementOfShips) {
+			let count = userQuantityOfShips
+			while (count > 0) {
+				let userShot = parseInt(prompt(`Залишилось ${count} кораблів, Введіть номер пострілу`))
+				if (placementOfShips[userShot - 1] === 1) {
+					placementOfShip[userShot - 1] = 0
+					count--
+					alert(`Ви влучили у корабель!Залишилось ${count} кораблів`)
+				}
+				else
+					alert(`Ви не влучили у корабель, спробуйте ще`)
+			}
+			if (count === 0)
+				alert(`Ви виграли!`)
+		}
+	</script>
+</body>
+
+</html>

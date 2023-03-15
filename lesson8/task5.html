@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h3>Задача 5</h3>
+	<p>Дано послідовність оцінок учня. Підрахувати кількість:
+		1) двійок
+		2) кількість хороших оцінок (добре, відмінно);
+		3) кількість оцінок, які нижче середнього.
+	</p>
+	<script>
+		const studentMarksQuantity = [5, 4, 4, 3, 2, 4, 2, 3, 3, 4, 4, 5]
+		// двійок
+		function getMarkDeuce(array) {
+			let count = 0
+			for (let i = 0; i < array.length; i++) {
+				if (array[i] === 2)
+					count++
+			}
+			return count
+		}
+		//кількість хороших оцінок
+		function GetGoodMarks(array) {
+			let count = 0
+			for (let i = 0; i < array.length; i++) {
+				if (array[i] > 3) {
+					count++
+				}
+			}
+			return count
+		}
+		// нижче середенього
+		function getMarksLessAverage(array) {
+			let count = 0
+			for (let i = 0; i < array.length; i++) {
+				if (array[i] < 4)
+					count++
+			}
+			return count
+		}
+		document.write(`1) двійок = ${getMarkDeuce(studentMarksQuantity)}<br>
+		2) кількість хороших оцінок (добре, відмінно) = ${GetGoodMarks(studentMarksQuantity)};<br>
+		3) кількість оцінок, які нижче середнього = ${getMarksLessAverage(studentMarksQuantity)}`)
+
+	</script>
+</body>
+
+</html>

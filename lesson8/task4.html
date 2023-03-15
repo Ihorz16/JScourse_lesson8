@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h3>Задача 4</h3>
+	<p>Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+		• починаються на букву «А»;
+		• перша і остання літери співпадають;
+		• складаються з більше ніш 5 символів;
+	</p>
+	<script>
+		const carsNumbers = ['АА3589РХ', 'АХ7547АК', 'СА7841ВА', 'АА3444СА', 'ВЕ5624АА', 'OM22']
+		// номери які починаются на літеру А
+		function getNumbersStartA(array) {
+			let count = 0
+			for (let i = 0; i < array.length; i++) {
+				if (array[i][0] === 'А')
+					count++
+			}
+			return count
+		}
+		// перша і остання літери співпадають
+		function getSameFirstAndEndSymbol(array) {
+			let count = 0
+			for (let i = 0; i < array.length; i++) {
+				if (array[i][0] === array[i][array[i].length - 1])
+					count++
+			}
+			return count
+		}
+		//  складаються з більше ніш 5 символів;
+		function getNumbersMoreThenFiveSymbols(array) {
+			let count = 0
+			for (let i = 0; i < array.length; i++) {
+				if (array[i].length > 5)
+					count++
+			}
+			return count
+		}
+
+		document.write(`•починаються на букву «А» : ${getNumbersStartA(carsNumbers)};<br>
+		• перша і остання літери співпадають : ${getSameFirstAndEndSymbol(carsNumbers)};<br>
+		• складаються з більше ніш 5 символів : ${getNumbersMoreThenFiveSymbols(carsNumbers)};`)
+	</script>
+</body>
+
+</html>

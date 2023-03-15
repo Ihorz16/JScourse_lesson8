@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h3>Задача 1</h3>
+	<p>Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься
+		(відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна
+		трійка)).</p>
+	<script>
+		// Функція введення масиву
+		function newArray(scoresQuantity) {
+			arr = []
+			for (let i = 1; i <= scoresQuantity; i++) {
+				const UserScore = parseInt(prompt(`Введіть оцінку з ${i} предмету`))
+				arr.push(UserScore)
+			}
+			return arr
+		}
+		const scoresQuantity = parseInt(prompt('Введіть кількість предметів'))
+		const scoresSubject = newArray(scoresQuantity)
+		// Функція для знаходження сер. оцінки
+		function getAverageScore(scoresSubject) {
+			average = 0
+			for (let j = 0; j < scoresSubject.length; j++) {
+				average += scoresSubject[j]
+			}
+			return average / scoresSubject.length
+		}
+		const averageScore = getAverageScore(scoresSubject)
+		alert(`Середній бал учня(ці) = ${averageScore}`)
+		//Створюємо фукнцію для знаходження мінімального значення
+		function getMinValue(scoresSubject) {
+			let minValue = scoresSubject[0]
+			for (let k = 1; k < scoresSubject.length; k++) {
+				if (scoresSubject[k] < minValue) {
+					minValue = scoresSubject[k]
+				}
+			}
+			return minValue
+		}
+		const minScore = getMinValue(scoresSubject)
+		//Функція визначення категорії учня
+		function getStudentCategory(minScore) {
+			let result
+			if (minScore < 3) {
+				result = `Двійочник`
+			}
+			else if (minScore === 3)
+				result = `Трійочник`
+			else if (minScore === 4)
+				result = `Хорошист`
+			else result = `Відмінник`
+			return result
+		}
+		const studentCategory = getStudentCategory(minScore)
+		alert(`Учень(ця) відноситься до категорії "${studentCategory}"`)
+
+
+	</script>
+
+</body>
+
+</html>
